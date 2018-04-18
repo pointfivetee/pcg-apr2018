@@ -104,6 +104,10 @@ function getExamples() {
     });
 }
 
+function formatForUrl(str) {
+    return encodeURIComponent(str).replace(/[\\)(]/g, '\\$&');
+}
+
 function updateDisplay() {
     var elem = document.getElementById("text");
     var challenge_text = template_text;
@@ -112,8 +116,8 @@ function updateDisplay() {
     challenge_text = challenge_text.replace(/{Example1}/g, examples[0]);
     challenge_text = challenge_text.replace(/{Example2}/g, examples[1]);
     challenge_text = challenge_text.replace(/{Example3}/g, examples[2]);
-    challenge_text = challenge_text.replace(/{Example1_encode}/g, encodeURIComponent(examples[0]));
-    challenge_text = challenge_text.replace(/{Example2_encode}/g, encodeURIComponent(examples[1]));
-    challenge_text = challenge_text.replace(/{Example3_encode}/g, encodeURIComponent(examples[2]));
+    challenge_text = challenge_text.replace(/{Example1_encode}/g, formatForUrl(examples[0]));
+    challenge_text = challenge_text.replace(/{Example2_encode}/g, formatForUrl(examples[1]));
+    challenge_text = challenge_text.replace(/{Example3_encode}/g, formatForUrl(examples[2]));
     elem.textContent = challenge_text;
 }
