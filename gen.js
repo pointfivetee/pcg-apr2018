@@ -23,6 +23,7 @@ const RANDOM_CATEGORY_URL = "https://en.wikipedia.org/w/api.php?action=query&lis
 const CATEGORY_MEMBERS_URL = "https://en.wikipedia.org/w/api.php?action=query&list=categorymembers&cmsort=timestamp&cmtitle=Category:{topic}&format=json&formatversion=2&callback=?";
 var topic = '';
 var examples = [];
+const WIKIPEDIA_URL_PREFIX = "https://en.wikipedia.org/wiki/";
 
 function pickTopic() {
     /*const xhttp = new XMLHttpRequest();
@@ -120,4 +121,14 @@ function updateDisplay() {
     challenge_text = challenge_text.replace(/{Example2_encode}/g, formatForUrl(examples[1]));
     challenge_text = challenge_text.replace(/{Example3_encode}/g, formatForUrl(examples[2]));
     elem.textContent = challenge_text;
+    
+    $("#category").text(topic);
+    $("#category-caps").text(topic.toUpperCase());
+    $(".example").text(function(i) {
+        return examples[i];
+    });
+    $(".example").prop("href", function(i) {
+        return WIKIPEDIA_URL_PREFIX + encodeURIComponent(examples[i]);
+    });
+    $("#pretty-text").show();
 }

@@ -1,9 +1,45 @@
 <head>
-    <title>Procedural Procedural Generation Challenge Generator</title>
+<title>Procedural Procedural Generation Challenge Generator</title>
+<style>
+#pretty-text {
+    font-family: sans-serif;
+    display: none;
+}
+</style>
 </head>
 <body>
 
 <button name="generate" onclick="fillText()">Generate</button>
+
+<div id="pretty-text">
+    <p>
+        <strong>Category is... <span id="category">CATEGORY</span></strong>
+    </p>
+    <p>
+        This month, your challenge is to build something that generates descriptions of new <span id="category-caps">CATEGORY</span>!
+    </p>
+    <p>Some examples to inspire you:</p>
+    <ul>
+        <li>
+            <p>
+                <a class="example">Example 1</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a class="example">Example 2</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a class="example">Example 3</a>
+            </p>
+        </li>
+    </ul>
+    <p>Good luck!</p>
+</div>
+
+
 <pre id="text">
 </pre>
 
