@@ -72,20 +72,29 @@ function isValidTopic(topic) {
     const words = topic.split(' ').map(x => x.toLowerCase());
     console.log(words);
 
+    // Filter out categories that are likely to be uninteresting.
     for (const bannedWord of BANNED_WORDS) {
         if (words.includes(bannedWord)) {
             return false;
         }
     }
     
-    var pluralFound = false;
+    // Only proceed if we find a word that seems plural-ish.
     for (const word of words) {
-        if (word.slice(-1) == 's' || PLURALS.includes(word)) {
-                pluralFound = true;
+        if (isLikelyPlural(word)) {
+            return true;
         }
     }
                 
-    return pluralFound;
+    return false;
+}
+
+function isLikelyPlural(word) {
+    if (word.slice(-1) == 's' && word.slice(-2, -1) != '\'') {
+        return true;
+    } else {
+        return PLURALS.includes(word);
+    }
 }
 
 function getExamples() {
