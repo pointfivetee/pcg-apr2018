@@ -56,6 +56,7 @@ const BANNED_WORDS = [
     'articles',
     'disestablishments',
     'establishments',
+    'lists',
     'redirects',
     'stubs',
     'wikipedia',
